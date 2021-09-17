@@ -1,0 +1,152 @@
+// 混合类
+
+.clearfix {
+  clear: both;
+}
+
+.border-radius(@para) {
+  -webkit-border-radius: @para;
+  border-radius: @para;
+}
+
+.box-shadow(@para) {
+  -webkit-box-shadow: @para;
+  box-shadow: @para;
+}
+
+.transform(@para) {
+  -webkit-transform: @para;
+  transform: @para;
+}
+
+.transform-origin(@para) {
+  -webkit-transform-origin: @para;
+  transform-origin: @para;
+}
+
+.transition(@para) {
+  -webkit-transition: @para;
+  transition: @para;
+}
+
+.animation(@para) {
+  -webkit-animation: @para;
+  animation: @para;
+}
+
+.filter(@para) {
+  -webkit-filter: @para;
+  filter: @para;
+}
+
+.flex() {
+  display: -webkit-box;
+  display: -ms-flex-box;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flex-direction(@para) {
+  -webkit-flex-direction: @para;
+  -ms-flex-direction: @para;
+  flex-direction: @para;
+}
+
+.flex-size(@para: 1) {
+  -webkit-flex-direction: @para;
+  -webkit-flex: @para;
+  -ms-flex: @para;
+  flex: @para;
+}
+
+.flex-shrink(@para: 1) {
+  -webkit-flex-shrink: @para;
+  -ms-flex-negative: @para;
+  flex-shrink: @para;
+}
+
+.flex-wrap(@para: wrap) {
+  -webkit-flex-wrap: @para;
+  flex-wrap: @para;
+}
+
+.flex-basis(@para: 10%) {
+  -webkit-flex-basis: @para;
+  -ms-flex-preferred-size: @para;
+  flex-basis: @para;
+}
+
+.justify-content(@para: space-between) {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: @para;
+  justify-content: @para;
+}
+
+.align-items(@para: center) {
+  -webkit-box-align: @para;
+  -ms-flex-align: @para;
+  -webkit-align-items: @para;
+  align-items: @para;
+}
+
+.line(@position, @color, @scale: 0.5) when (@position =top) {
+  &::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    height: 1px;
+    content: '';
+    background-color: @color;
+    .transform(scaleY(@scale));
+  }
+}
+
+.line(@position, @color, @scale: 0.5) when (@position =bottom) {
+  &::after {
+    position: absolute;
+    left: 0;
+    top: auto;
+    right: auto;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    content: '';
+    background-color: @color;
+    .transform(scaleY(@scale));
+    .transform-origin(50% 100%);
+  }
+}
+
+.line(@position, @color, @scale: 0.5) when (@position =left) {
+  &::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: auto;
+    bottom: auto;
+    width: 1px;
+    height: 100%;
+    content: '';
+    background-color: @color;
+    .transform(scaleX(@scale));
+  }
+}
+
+.line(@position, @color, @scale: 0.5) when (@position =right) {
+  &::after {
+    position: absolute;
+    left: auto;
+    top: 0;
+    right: 0;
+    bottom: auto;
+    width: 1px;
+    height: 100%;
+    content: '';
+    background-color: @color;
+    .transform(scaleX(@scale));
+  }
+}
